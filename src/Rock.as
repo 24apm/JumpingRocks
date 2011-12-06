@@ -10,9 +10,10 @@ package
 		
 		private var _url:String;
 		private var _loader:UILoader;
-		public function Rock(url:String)
+		public function Rock(url:String = null)
 		{
 			super();
+			if(url == null) url = AssetTranslationTable.ROCK;
 			_url = url;
 		}
 		protected override function init(e:Event = null):void

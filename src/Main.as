@@ -14,6 +14,7 @@ package
 		private var _map:MapView;
 		
 		public static var gameLayer:Sprite;
+		public static var uiLayer:Sprite;
 		public static var charLayer:Sprite;
 		
 		public function Main()
@@ -21,6 +22,9 @@ package
 			trace("Main loaded!");
 			gameLayer = new Sprite();
 			addChild(gameLayer);
+
+			uiLayer = new Sprite();
+			addChild(uiLayer);
 			
 			charLayer = new Sprite();
 			addChild(charLayer);
