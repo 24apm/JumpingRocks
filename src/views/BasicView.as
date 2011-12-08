@@ -1,7 +1,9 @@
 package views 
 {
+	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 
 	public class BasicView extends UIElement
 	{
@@ -55,5 +57,10 @@ package views
 			_warps[3].y = (stage.stageHeight - _warps[3].height) * 0.5;
 		}
 
+		public override function destruct():void
+		{
+
+			super.destruct();
+		}
 	}
 }

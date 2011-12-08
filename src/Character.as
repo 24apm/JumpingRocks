@@ -6,6 +6,7 @@ package
 	{
 		private var _url:String;
 		private var _character:UILoader;
+	
 		public function Character(url:String)
 		{
 			super();
@@ -16,9 +17,10 @@ package
 			super.init(e);
 			_character = new UILoader(_url);
 			addChild(_character);
+			
 		}
 		public override function destruct():void
-		{
+		{ 
 			if(_character)
 			{
 				_character.destruct();

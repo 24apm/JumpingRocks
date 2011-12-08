@@ -5,6 +5,8 @@ package
 	import flash.geom.Matrix3D;
 	import flash.ui.Keyboard;
 	
+	import javaScriptInterface.JavaScriptInterface;
+	
 	import views.MapView;
 	import views.ViewManager;
 	
@@ -19,6 +21,7 @@ package
 		
 		public function Main()
 		{	
+
 			trace("Main loaded!");
 			gameLayer = new Sprite();
 			addChild(gameLayer);
@@ -30,6 +33,11 @@ package
 			addChild(charLayer);
 			
 			addChild(new GameInit());
+			
+			var obj:Object = JavaScriptInterface.getNeighbor();
+		var label:UILabel = new UILabel("HIIIIIIIIIIIIIIIIIII " +String(obj));
+			uiLayer.addChild(label);
+			label.x = 200;
 	}
 	
 	}

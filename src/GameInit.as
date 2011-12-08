@@ -1,10 +1,14 @@
 package
 {
+	import com.greensock.TweenLite;
+	
 	import event.ItemEvent;
 	
+	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
+	import flash.events.MouseEvent;
 	import flash.ui.Keyboard;
 	
 	import views.MapView;
@@ -15,6 +19,8 @@ package
 		public static var character:Character;
 		private var _inventory:UIInventory;
 		private var _statusBar:StatusBar;
+		private var _fireAni:FireAnimation;
+		
 		public function GameInit()
 		{
 			super();
@@ -39,10 +45,17 @@ package
 			
 			
 			Main.gameLayer.addEventListener(ItemEvent.ITEM_CLICKED, itemClicked);
-			
+		
+			stage.addEventListener(MouseEvent.CLICK, moveCharacter);
+		}
+		private function moveCharacter(e:MouseEvent):void
+		{
+			TweenLite.to(character, 10, {x:e.stageX, y:e.stageY, ease:100});
 		}
 		private function itemClicked(e:ItemEvent):void
 		{
+
+
 			if(e.item is Rock)
 			{
 				character.x = e.item.x;
@@ -52,7 +65,10 @@ package
 				{
 					trace("your inventory is full!!");
 				}
-				
+				_fireAni = new FireAnimation(AssetTranslationTable.ANI_FIRE);
+				_fireAni.x = character.x;
+				_fireAni.y = character.y;
+				Main.gameLayer.addChild(_fireAni);
 				
 			}
 

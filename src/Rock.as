@@ -2,6 +2,8 @@ package
 {
 	import event.ItemEvent;
 	
+	import flash.display.DisplayObjectContainer;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 
@@ -10,6 +12,7 @@ package
 		
 		private var _url:String;
 		private var _loader:UILoader;
+		private var _lastParentLayer:DisplayObjectContainer;
 		public function Rock(url:String = null)
 		{
 			super();
@@ -24,6 +27,9 @@ package
 			addEventListener(MouseEvent.ROLL_OVER, rOver);
 			addEventListener(MouseEvent.ROLL_OUT, rOut);
 			addEventListener(MouseEvent.CLICK, click);
+//			addEventListener(MouseEvent.MOUSE_DOWN, onStartDrag);
+//			addEventListener(MouseEvent.MOUSE_UP, onStopDrag);
+			
 		}
 		private function rOver(e:MouseEvent):void
 		{
@@ -36,6 +42,17 @@ package
 		private function click(e:MouseEvent):void
 		{
 			dispatchEvent(new ItemEvent(ItemEvent.ITEM_CLICKED, this, true));
+		}
+		private function onStartDrag(e:MouseEvent):void
+		{
+			this.startDrag();
+			_lastParentLayer = this.parent;
+			Main.uiLayer.addChild(this);
+		}
+		private function onStopDrag(e:MouseEvent):void
+		{
+			this.stopDrag();
+			_lastParentLayer.addChild(this);
 		}
 		public override function destruct():void
 		{
