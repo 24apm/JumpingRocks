@@ -27,8 +27,8 @@ package
 			addEventListener(MouseEvent.ROLL_OVER, rOver);
 			addEventListener(MouseEvent.ROLL_OUT, rOut);
 			addEventListener(MouseEvent.CLICK, click);
-//			addEventListener(MouseEvent.MOUSE_DOWN, onStartDrag);
-//			addEventListener(MouseEvent.MOUSE_UP, onStopDrag);
+			addEventListener(MouseEvent.MOUSE_DOWN, onStartDrag);
+			addEventListener(MouseEvent.MOUSE_UP, onStopDrag);
 			
 		}
 		private function rOver(e:MouseEvent):void
@@ -52,10 +52,16 @@ package
 		private function onStopDrag(e:MouseEvent):void
 		{
 			this.stopDrag();
-			_lastParentLayer.addChild(this);
+			if(_lastParentLayer)
+				_lastParentLayer.addChild(this);
 		}
 		public override function destruct():void
 		{
+			removeEventListener(MouseEvent.ROLL_OVER, rOver);
+			removeEventListener(MouseEvent.ROLL_OUT, rOut);
+			removeEventListener(MouseEvent.CLICK, click);
+			removeEventListener(MouseEvent.MOUSE_DOWN, onStartDrag);
+			removeEventListener(MouseEvent.MOUSE_UP, onStopDrag);
 			if(_loader)
 			{
 				_loader.destruct();

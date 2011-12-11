@@ -16,7 +16,6 @@
  */
 
 require_once "base_facebook.php";
-
 /**
  * Extends the BaseFacebook class with the intent of using
  * PHP sessions to store user ids and access tokens.
@@ -90,4 +89,14 @@ class Facebook extends BaseFacebook
                               $this->getAppId(),
                               $key));
   }
+  public function iframe_require_login() {
+  if ($user = $this->get_loggedin_user()) {
+    return $user;
+  }
+  $this->iframe_redirect($this->get_login_url(self::current_url(), $this->in_frame()));
+}
+public function iframe_redirect($url) {
+  header('Location: ' . $url);
+  exit;
+}
 }

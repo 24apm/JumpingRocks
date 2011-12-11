@@ -3,8 +3,8 @@
 require '../src/facebook.php';
 
 $facebook = new Facebook(array(
-  'appId'  => '191149314281714',
-  'secret' => '73b67bf1c825fa47efae70a46c18906b',
+  'appId'  => '249365405125992',
+  'secret' => 'a92a0f19fd1f5b11779622c8b0324acd',
 ));
 
 // See if there is a user from a cookie
@@ -15,7 +15,7 @@ if ($user) {
     // Proceed knowing you have a logged in user who's authenticated.
     $user_profile = $facebook->api('/me');
   } catch (FacebookApiException $e) {
-    echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+    echo '<pre>'.htmlspecialchars(print_r("Error: ".$e, true)).'</pre>';
     $user = null;
   }
 }
@@ -27,7 +27,7 @@ if ($user) {
     <?php if ($user) { ?>
       Your user profile is
       <pre>
-        <?php print htmlspecialchars(print_r($user_profile, true)) ?>
+        <?php print htmlspecialchars(print_r("User: ".$user_profile, true)) ?>
       </pre>
     <?php } else { ?>
       <fb:login-button></fb:login-button>

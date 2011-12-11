@@ -13,7 +13,7 @@ package
 		private var _time:int = 100;
 		private var _score:int = 0;
 		
-		private static const SCORE_LABEL:String = "SCORE: ";
+		private static const SCORE_LABEL:String = "SCORE2: ";
 		private static const TIMER_LABEL:String = "TIMER: ";
 		
 		public function StatusBar()
@@ -46,6 +46,11 @@ package
 			_score += value;
 			_scoreLabel.text = SCORE_LABEL + _score;
 			
+		}
+		public function setScore(value:uint):void
+		{
+			_score = value;
+			_scoreLabel.text = SCORE_LABEL + _score;
 		}
 		public function subScore(value:uint):void
 		{

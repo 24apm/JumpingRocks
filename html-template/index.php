@@ -1,5 +1,25 @@
+<?php include ("php/config.php"); ?>
+<?php include ("php/fbsession.php");?>
+<?php include ("php/appVars.php");?>
+<?php 
+	$MainSwf = "Main.swf";
+	if(isset($_REQUEST["debug"]))
+	{
+		$MainSwf = "MainDebug.swf";
+	}
+	if(isset($_REQUEST["showfriends"]))
+	{
+		$showFriends = true;
+	}
+	else 
+	{
+		$showFriends = false;
+	}
+	
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0014)about:internet -->
+
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" style="overflow: hidden"> 
     <!-- 
     Smart developers always View Source. 
@@ -10,6 +30,7 @@
     
     Learn more about Flex at http://flex.org 
     // -->
+	
     <head>
         <title></title>
         <meta name="google" value="notranslate" />         
@@ -21,29 +42,37 @@
              if JavaScript disabled.
         -->
         <style type="text/css" media="screen"> 
-            html, body  { height:100%; }
+            html, body  { height:1400px; }
             body { margin:0; padding:0; overflow:auto; text-align:center; 
-                   background-color: #000000; }   
+                   background-color: #FFFFFF; }   
             object:focus { outline:none; }
             #flashContent { display:none; }
         </style>
-        
+
         <!-- Enable Browser History by replacing useBrowserHistory tokens with two hyphens -->
         <!-- BEGIN Browser History required section -->
-        <link rel="stylesheet" type="text/css" href="history/history.css" />
-        <script type="text/javascript" src="history/history.js"></script>
+        <link rel="stylesheet" type="text/css" href="<? echo SERVER_URL; ?>history/history.css" />
+        <link rel="stylesheet" type="text/css" href="<? echo SERVER_URL; ?>css/game.css" />
+       
+	   <script type="text/javascript" src="<? echo SERVER_URL; ?>history/history.js"></script>
         <!-- END Browser History required section -->  
-            
-        <script src="//connect.facebook.net/en_US/all.js"></script>
-         <script type="text/javascript" src="js/appVars.js"></script>
-        <script type="text/javascript" src="js/facebook.js"></script>
-        <script type="text/javascript" src="swfobject.js"></script>
+          
+		 <script src="//connect.facebook.net/en_US/all.js"></script>
+        <script type="text/javascript" src="<? echo SERVER_URL; ?>js/facebook.js"></script>
+		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/platform.js"></script>
+		
+        <script type="text/javascript" src="<? echo SERVER_URL; ?>swfobject.js"></script>
         <script type="text/javascript">
+		
+		
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "10.2.0";
             // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
             var xiSwfUrlStr = "playerProductInstall.swf";
             var flashvars = {};
+			flashvars.serverUrl = "<? echo SERVER_URL; ?>";
+			flashvars.showFriends = "<? echo $showFriends; ?>";
+			
             var params = {};
             params.quality = "high";
             params.bgcolor = "#000000";
@@ -53,8 +82,11 @@
             attributes.id = "Main";
             attributes.name = "Main";
             attributes.align = "middle";
+			
+			console.log("FLASH PARAMS");
+			console.log(flashvars);
             swfobject.embedSWF(
-                "Main.swf", "flashContent", 
+                "<? echo $MainSwf ?>", "flashContent", 
                 "760", "630", 
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
@@ -65,13 +97,18 @@
 
  		<body style="overflow: hidden">
  		<div id="fb-root"></div>
- 		<script type="text/javascript" src="js/payment.js"></script>
+<script>
+		console.log("FB.Canvas.setSize");
+	FB.Canvas.setSize({ width: 760, height: 1400 });
+	</script>
+       
+ 		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/payment.js"></script>
  		<p> <a onclick="placeOrder(); return false;">Buy Stuff</a></p>
- 		
         <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
              JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
              when JavaScript is disabled.
         -->
+		
         <div id="flashContent">
             <p>
                 To view this page ensure that Adobe Flash Player version 
