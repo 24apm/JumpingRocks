@@ -19,8 +19,8 @@ else
 	print_r("SESSION already set currentUserId <br/>");
 }
 
-print_r("outside fbsession get /me <br/>");
-print_r("SESSION: " . $_SESSION . "<br/>");
+//print_r("outside fbsession get /me <br/>");
+//print_r("SESSION: " . $_SESSION . "<br/>");
 print_r($user);
 if ($user) {
   try {
@@ -46,20 +46,30 @@ if ($user) {
 <div xmlns:fb="http://www.facebook.com/2008/fbml">
     <?php if ($user) {
 
-	$neighborsData = $facebook->api( array(
+	$neighborsIdsQueryResult = $facebook->api( array(
         'method' => 'fql.query',
         'query' => ' SELECT uid FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
     ));
-
 	$neighborIds = array();
-	foreach($neighborsData as $aNeighborData)
+	foreach($neighborsIdsQueryResult as $aNeighborId)
 	{
-		$neighborIds[] = $aNeighborData[uid];
+		$neighborIds[$aNeighborId[uid]] = $aNeighborId;
 	}
-	//print_r("SESSION ".$_SESSION['neighborIds'], true);
+	$_SESSION['neighborIds'] = json_encode($neighborIds);
 	
 	
-	$_SESSION['neighborIds'] = $neighborIds;
+	$neighborsDataQueryResult = $facebook->api( array(
+        'method' => 'fql.query',
+        'query' => ' SELECT uid, first_name, last_name, pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
+    ));
+	$neighborData = array();
+	
+	foreach($neighborsDataQueryResult as $aNeighborData)
+	{
+		$neighborData[$aNeighborData[uid]] = $aNeighborData;
+	}
+	$_SESSION['neighborData'] = json_encode($neighborData );
+	
 	 ?>
       <a href="<?php echo $logoutUrl; ?>">Logout</a>
     <?php

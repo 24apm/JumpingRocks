@@ -9,7 +9,6 @@
       xfbml      : true  // parse XFBML
     });
 	
-	 gameInit();
 	 
     // Additional initialization code here
     FB.login(function(response) {
@@ -78,6 +77,7 @@ function getFriendsData(token)
 }
 function gameInit()
 {
+	
 		console.log("init neighbor");
 		friendCount = appVars.neighborIds.length;
 		appVars.neighborsData = [];
@@ -86,9 +86,9 @@ function gameInit()
 	        FB.api('/'+appVars.neighborIds[i], function(response) 
 	        {
 	          friendsData.push(response);
-			  if(friendsData.length >=friendCount)
+			  if(friendsData.length >= friendCount)
 			  {
-			  appVars.neighborsData = friendsData;
+				appVars.neighborsData = friendsData;
 				console.log("NOT CACHED getFriendsData");
 				console.log(appVars.neighborsData);
 				

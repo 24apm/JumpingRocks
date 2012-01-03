@@ -2,6 +2,8 @@ package request
 {
 	import com.adobe.serialization.json.JSON;
 	
+	import config.LookupTable;
+	
 	import flash.events.Event;
 	import flash.geom.Point;
 	import flash.net.URLLoader;
@@ -9,7 +11,6 @@ package request
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
-	import config.LookupTable;
 
 	public class HTTPGetOwner extends HTTPLite
 	{

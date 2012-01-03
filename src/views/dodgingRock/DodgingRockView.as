@@ -2,6 +2,8 @@ package views.dodgingRock
 {
 	import com.greensock.TweenLite;
 	
+	import config.AssetTranslationTable;
+	
 	import data.DirectionData;
 	
 	import event.ItemEvent;
@@ -26,15 +28,15 @@ package views.dodgingRock
 	import request.HTTPGetOwner;
 	import request.HTTPUpdatePoint;
 	
+	import specialObjects.Rock;
 	import specialObjects.UIBlackSmith;
 	
+	import util.Layer;
 	import util.Util;
 	
 	import views.BasicView;
 	import views.SwampView;
 	import views.ViewManager;
-	import config.AssetTranslationTable;
-	import specialObjects.Rock;
 
 	public class DodgingRockView extends BasicView
 	{
@@ -68,7 +70,7 @@ package views.dodgingRock
 			_timer.addEventListener(TimerEvent.TIMER, onTimer);
 			_timer.start()
 			addEventListener(Event.ENTER_FRAME, onFrame);
-			Main.gameLayer.addEventListener(ItemEvent.ITEM_CLICKED, itemClicked);
+			Layer.gameLayer.addEventListener(ItemEvent.ITEM_CLICKED, itemClicked);
 			
 		}
 		private function onFrame(e:Event):void
@@ -112,7 +114,7 @@ package views.dodgingRock
 				_blacksmithAni = new UIBlackSmith(upgradestatus);
 				_blacksmithAni.x = e.item.x;
 				_blacksmithAni.y = e.item.y;
-				Main.gameLayer.addChild(_blacksmithAni);
+				Layer.gameLayer.addChild(_blacksmithAni);
 				
 				//character.x = e.item.x;
 				//character.y = e.item.y - character.height + e.item.height * 0.5;

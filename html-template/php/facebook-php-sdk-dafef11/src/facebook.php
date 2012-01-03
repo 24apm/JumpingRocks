@@ -32,7 +32,7 @@ class Facebook extends BaseFacebook
    * @see BaseFacebook::__construct in facebook.php
    */
   public function __construct($config) {
-	print_r("session_id " . session_id() . "<br/>");
+	print_r("facebook.php: session_id " . session_id() . "<br/>");
     if (!session_id()) {
       session_start();
     }

@@ -26,6 +26,11 @@
 		}
 		die();
 	}
+	if($id == "" || $id <= 0)
+	{
+		echo "bad request in getuser.php: bad id: " . $id;
+		die();
+	}
 	include("dbinfo.inc.php");
 	mysql_connect($dbpath,$username,$password);
 	@mysql_select_db($database) or die( "Unable to select database");
