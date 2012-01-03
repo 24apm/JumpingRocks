@@ -27,7 +27,15 @@ package request
 		}
 		protected override function onComplete (e:Event):void{
 			//GameInit.addLabel("HTTPGet onComplete " + e.currentTarget.data , new Point(0,120));
-			var obj:Object = JSON.decode(e.currentTarget.data);
+			var obj:Object = {};
+			try
+			{
+				obj = JSON.decode(e.currentTarget.data);
+			}
+			catch(e:Error)
+			{
+				trace("Error in parsing");
+			}
 			if(obj.hasOwnProperty("id"))
 				id = obj["id"];
 			

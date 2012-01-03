@@ -7,6 +7,8 @@ package views.jumpingEggs
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
+	import request.PlatformUtil;
+	
 	import specialObjects.Character;
 	import specialObjects.FireAnimation;
 	
@@ -56,6 +58,7 @@ package views.jumpingEggs
 			_egg.removeEventListener(MouseEvent.CLICK, onEggClick);
 			(_egg.loader.content as MovieClip).gotoAndPlay("crack");
 			buildChar();
+
 		}
 		private function buildChar():void
 		{
@@ -67,6 +70,11 @@ package views.jumpingEggs
 			
 			_character.x = _fireAni.x = _egg.x;
 			_character.y = _fireAni.y = _egg.y;
+			_character.addEventListener(MouseEvent.CLICK, onCharClick);
+		}
+		private function onCharClick(e:MouseEvent):void
+		{
+			PlatformUtil.publish();
 		}
 	}
 }

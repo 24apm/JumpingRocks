@@ -64,7 +64,25 @@
 		 <script src="//connect.facebook.net/en_US/all.js"></script>
 
 		
-        <script type="text/javascript" src="<? echo SERVER_URL; ?>swfobject.js"></script>
+    
+    </head>
+
+ 		<body style="overflow: hidden">
+ 		<div id="fb-root"></div>
+		        <script type="text/javascript" src="<? echo SERVER_URL; ?>js/facebook.js"></script>
+		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/platform.js"></script>
+		<script>
+			console.log("FB.Canvas.setSize");
+		FB.Canvas.setSize({ width: 760, height: 1400 });
+		</script>
+       
+ 		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/payment.js"></script>
+ 		<p> <a onclick="placeOrder(); return false;">Buy Stuff</a></p>
+        <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
+             JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+             when JavaScript is disabled.
+        -->
+		    <script type="text/javascript" src="<? echo SERVER_URL; ?>swfobject.js"></script>
         <script type="text/javascript">
 		
 		
@@ -96,24 +114,6 @@
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
             swfobject.createCSS("#flashContent", "display:block;text-align:left;");
         </script>
-    </head>
-
- 		<body style="overflow: hidden">
- 		<div id="fb-root"></div>
-		        <script type="text/javascript" src="<? echo SERVER_URL; ?>js/facebook.js"></script>
-		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/platform.js"></script>
-<script>
-		console.log("FB.Canvas.setSize");
-	FB.Canvas.setSize({ width: 760, height: 1400 });
-	</script>
-       
- 		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/payment.js"></script>
- 		<p> <a onclick="placeOrder(); return false;">Buy Stuff</a></p>
-        <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
-             JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
-             when JavaScript is disabled.
-        -->
-		
         <div id="flashContent">
             <p>
                 To view this page ensure that Adobe Flash Player version 
@@ -124,6 +124,7 @@
                 document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
                                 + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
             </script> 
+			
         </div>
         
         <noscript>

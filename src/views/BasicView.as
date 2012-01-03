@@ -1,9 +1,12 @@
 package views 
 {
+	import config.AssetTranslationTable;
+	
 	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	
 	import specialObjects.Warp;
 
 	public class BasicView extends UIElement
@@ -21,6 +24,10 @@ package views
 			super();
 			_ViewClasses = ViewClasses;
 			_bgUrl = bgUrl;
+			if(_bgUrl == null)
+			{
+				_bgUrl = AssetTranslationTable.MAP;
+			}
 		}
 		protected override function init(e:Event=null):void
 		{

@@ -116,7 +116,7 @@ package
 		}
 		private function initUser():void
 		{
-			LookupTable.currentUserId = String(JavaScriptInterface.getMyData());
+			LookupTable.currentUserId = String(PlatformUtil.getMyData());
 			var currentUserId:String = LookupTable.currentUserId;
 		}
 

@@ -7,6 +7,8 @@ package ui
 	
 	import javaScriptInterface.JavaScriptInterface;
 	
+	import request.PlatformUtil;
+	
 	public class UIInventory extends UIElement
 	{
 		private var _gridMap:UIGridMap;
@@ -37,7 +39,7 @@ package ui
 		private function onClick(e:MouseEvent):void
 		{
 			_gridMap.visible = !_gridMap.visible;
-			JavaScriptInterface.publish();
+			PlatformUtil.publish();
 		}
 		public function addItem(item:UIElement):void
 		{
