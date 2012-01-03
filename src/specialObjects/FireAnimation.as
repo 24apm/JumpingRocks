@@ -1,13 +1,15 @@
-package
+package specialObjects
 {
+	import config.UILoaderConfig;
+	
 	import flash.display.MovieClip;
 	import flash.events.Event;
 
 	public class FireAnimation extends UILoader
 	{
-		public function FireAnimation(url:String = null)
+		public function FireAnimation(url:String = null, loaderConfig:UILoaderConfig = null)
 		{
-			super(url);
+			super(url, loaderConfig);
 		}
 		protected override function init(e:Event=null):void
 		{

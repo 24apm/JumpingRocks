@@ -36,7 +36,10 @@
    }(document));
    
 
-
+function callback(token, param)
+{
+	getElementById("Main").callback(token, param);
+}
 function getMe()
 {
 //FB.api('/me', function(response) {
@@ -58,14 +61,20 @@ function getFriend()
 		console.log(appVars.neighborIds);
 	return appVars.neighborIds;
 }
-function getFriendsData()
+function getFriendsData(token)
 {
 	console.log("get neighbor");
 	console.log(appVars.neighborsData);
+	
 	if(appVars.neighborsData.length <= 0)
 		return gameInit();
 	else
+	{
+		console.log("callback");
+		console.log(appVars.neighborsData);
+		callback(token, appVars.neighborsData);
 		return appVars.neighborsData;
+	}
 }
 function gameInit()
 {

@@ -1,24 +1,42 @@
-<?
+<?php
+	
+	//print_r("session_id " . session_id() . "<br/>");
+	//print_r("SESSION: ". $_SESSION['currentUserId']);
 	if(isset($_SESSION['currentUserId']))
 	{
-		$id = $_REQUEST["currentUserId"];
+		//print_r("SESSION: currentUserId");
+		$id = $_SESSION["currentUserId"];
 	}
 	else if(isset($_REQUEST["id"]))
 	{	
+		//print_r("SESSION: id");
 		$id = $_REQUEST["id"];
 	}
-
+	else
+	{
+		//print_r("SESSION: else");
+		if(!isset($_SESSION))
+		{
+			
+			echo "bad request in getuser.php: no session";
+		}
+		else
+		{
+			echo "bad request in getuser.php: " . $id;
+		}
+		die();
+	}
 	include("dbinfo.inc.php");
 	mysql_connect($dbpath,$username,$password);
 	@mysql_select_db($database) or die( "Unable to select database");
 	$query="SELECT id, score FROM user WHERE id = $id";
-	$result=mysql_query($query);
+	//print_r($query . "<br/>");
+	
+	$result=mysql_query($query) or die(mysql_error());
 	// user doesn't exist yet
 	$user;
 	
 	// found
-	//print_r("<br />query result2: $result <br />");
-	
 	if($row = mysql_fetch_array($result))
 	{
 		$user['id'] = $row['id'];

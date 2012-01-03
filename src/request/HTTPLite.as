@@ -18,8 +18,8 @@ package request
 		}
 		protected function send(variables:URLVariables):void
 		{
-			trace("send: " + _view);
-			var path:String = AppVars.serverUrl + "php/db/" + _view;
+			var path:String = AppVars.serverUrl + "php/requestHandler.php?requestType=" + _view;
+			trace("send: " + path);
 			var httprequest:URLRequest = new URLRequest (path);
 			httprequest.method = URLRequestMethod.POST;
 			httprequest.data = variables;
@@ -36,10 +36,6 @@ package request
 			
 		}
 		protected function onComplete (event:Event):void{
-			//LookupTable.neighborsList = new Vector.<NeighborData>;
-		//	trace("");
-			//statusTxt1.text = event.target.data;
-			
 			//override
 		}  
 	}

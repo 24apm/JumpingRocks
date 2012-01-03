@@ -8,9 +8,19 @@ $facebook = new Facebook(array(
 
  //See if there is a user from a cookie
 $user = $facebook->getUser();
-$_SESSION['currentUserId'] = $user;
+if(!isset($_SESSION))
+{
+	
+	$_SESSION['currentUserId'] = $user;
+	print_r("SESSION set currentUserId <br/>");
+}
+else
+{
+	print_r("SESSION already set currentUserId <br/>");
+}
 
 print_r("outside fbsession get /me <br/>");
+print_r("SESSION: " . $_SESSION . "<br/>");
 print_r($user);
 if ($user) {
   try {

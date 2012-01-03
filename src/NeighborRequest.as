@@ -7,6 +7,7 @@ package
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
+	import config.LookupTable;
 	
 	public class NeighborRequest
 	{
@@ -29,8 +30,6 @@ package
 		
 		public function onComplete (event:Event):void{
 			LookupTable.neighborsList = new Vector.<NeighborData>;
-			1+1;
-			//statusTxt1.text = event.target.data;
 		}  
 	}
 	

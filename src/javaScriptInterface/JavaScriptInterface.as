@@ -11,6 +11,10 @@ package javaScriptInterface
 		public function JavaScriptInterface()
 		{
 		}
+		public static function getMyData():Object
+		{
+			return ExternalInterface.call("getMe");
+		}
 		public static function getNeighbor():Object
 		{
 			var obj:Object;

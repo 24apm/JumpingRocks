@@ -1,0 +1,167 @@
+<DOMDocument backgroundColor="#ffffff" frameRate="29" width="100" height="100" versionInfo="Exported from Adobe After Effects version 10.5x253" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" xsi:schemaLocation="xhttp://ns.adobe.com/xfl/2008/ ../Javascript/Scripts/XFL_schema.xsd" >
+  <folders ></folders>
+  <media >
+    <DOMVideoItem href="LIBRARY/Shape Layer 1.flv" name="Shape Layer 1" ></DOMVideoItem>
+    <DOMVideoItem href="LIBRARY/Shape Layer 2.flv" name="Shape Layer 2" ></DOMVideoItem>
+  </media>
+  <symbols >
+    <DOMSymbolItem xmlns="http://ns.adobe.com/xfl/2008/" name="Shape Layer 2_1" >
+      <timeline >
+        <DOMTimeline name="Shape Layer 2_1" >
+          <layers >
+            <DOMLayer name="Layer 1" color="#4FFF4F" current="true" autoNamed="true" frameCount="77" >
+              <frames >
+                <DOMFrame keyMode="9728" index="0" duration="77" >
+                  <elements >
+                    <DOMVideoInstance libraryItemName="Shape Layer 2" ></DOMVideoInstance>
+                  </elements>
+                </DOMFrame>
+              </frames>
+            </DOMLayer>
+          </layers>
+        </DOMTimeline>
+      </timeline>
+    </DOMSymbolItem>
+    <DOMSymbolItem xmlns="http://ns.adobe.com/xfl/2008/" name="Shape Layer 1_1" >
+      <timeline >
+        <DOMTimeline name="Shape Layer 1_1" >
+          <layers >
+            <DOMLayer name="Layer 1" color="#4FFF4F" current="true" autoNamed="true" frameCount="77" >
+              <frames >
+                <DOMFrame keyMode="9728" index="0" duration="77" >
+                  <elements >
+                    <DOMVideoInstance libraryItemName="Shape Layer 1" ></DOMVideoInstance>
+                  </elements>
+                </DOMFrame>
+              </frames>
+            </DOMLayer>
+          </layers>
+        </DOMTimeline>
+      </timeline>
+    </DOMSymbolItem>
+  </symbols>
+  <timelines >
+    <DOMTimeline name="Comp 2" currentFrame="0" >
+      <layers >
+        <DOMLayer name="Shape Layer 2" frameCount="77" animationType="motion object" >
+          <frames >
+            <DOMFrame tweenType="motion object" keyMode="10243" index="0" duration="77" >
+              <elements >
+                <DOMSymbolInstance libraryItemName="Shape Layer 2_1" symbolType="graphic" firstFrame="0" loop="loop" >
+                  <matrix >
+                    <Matrix tx="0" ty="0" ></Matrix>
+                  </matrix>
+                  <transformationPoint >
+                    <Point x="0" y="0" ></Point>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+              <motionObjectXML xmlns="http://ns.adobe.com/xfl/2008/motion" >
+                <AnimationCore TimeScale="29970" duration="77000" Version="1" >
+                  <TimeMap strength="0" type="Quadratic" ></TimeMap>
+                  <metadata >
+                    <Settings orientToPath="0" xformPtXOffsetPct="0" xformPtYOffsetPct="0" xformPtZOffsetPct="0" ></Settings>
+                  </metadata>
+                  <PropertyContainer id="headContainer" >
+                    <PropertyContainer id="Basic_Motion" >
+                      <Property id="Motion_X" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Motion_Y" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Rotation_Z" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                    </PropertyContainer>
+                    <PropertyContainer id="Transformation" >
+                      <Property id="Scale_X" enabled="1" >
+                        <Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Scale_Y" enabled="1" >
+                        <Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Skew_X" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Skew_Y" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                    </PropertyContainer>
+                    <PropertyContainer id="Colors" >
+                      <PropertyContainer id="Alpha_Color" >
+                        <Property id="Alpha_Amount" enabled="1" >
+                          <Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0" ></Keyframe>
+                        </Property>
+                      </PropertyContainer>
+                    </PropertyContainer>
+                    <PropertyContainer id="Filters" ></PropertyContainer>
+                  </PropertyContainer>
+                </AnimationCore>
+              </motionObjectXML>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="Shape Layer 1" frameCount="77" animationType="motion object" >
+          <frames >
+            <DOMFrame tweenType="motion object" keyMode="10243" index="0" duration="77" >
+              <elements >
+                <DOMSymbolInstance libraryItemName="Shape Layer 1_1" symbolType="graphic" firstFrame="0" loop="loop" >
+                  <matrix >
+                    <Matrix tx="0" ty="0" ></Matrix>
+                  </matrix>
+                  <transformationPoint >
+                    <Point x="0" y="0" ></Point>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+              <motionObjectXML xmlns="http://ns.adobe.com/xfl/2008/motion" >
+                <AnimationCore TimeScale="29970" duration="77000" Version="1" >
+                  <TimeMap strength="0" type="Quadratic" ></TimeMap>
+                  <metadata >
+                    <Settings orientToPath="0" xformPtXOffsetPct="0" xformPtYOffsetPct="0" xformPtZOffsetPct="0" ></Settings>
+                  </metadata>
+                  <PropertyContainer id="headContainer" >
+                    <PropertyContainer id="Basic_Motion" >
+                      <Property id="Motion_X" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Motion_Y" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Rotation_Z" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                    </PropertyContainer>
+                    <PropertyContainer id="Transformation" >
+                      <Property id="Scale_X" enabled="1" >
+                        <Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Scale_Y" enabled="1" >
+                        <Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Skew_X" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                      <Property id="Skew_Y" enabled="1" >
+                        <Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0" ></Keyframe>
+                      </Property>
+                    </PropertyContainer>
+                    <PropertyContainer id="Colors" >
+                      <PropertyContainer id="Alpha_Color" >
+                        <Property id="Alpha_Amount" enabled="1" >
+                          <Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0" ></Keyframe>
+                        </Property>
+                      </PropertyContainer>
+                    </PropertyContainer>
+                    <PropertyContainer id="Filters" ></PropertyContainer>
+                  </PropertyContainer>
+                </AnimationCore>
+              </motionObjectXML>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timelines>
+</DOMDocument>

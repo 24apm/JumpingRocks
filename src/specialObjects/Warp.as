@@ -1,4 +1,4 @@
-package   
+package specialObjects   
 {
 	import flash.display.Shape;
 	import flash.events.Event;

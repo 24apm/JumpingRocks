@@ -9,13 +9,14 @@ package request
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
+	import config.LookupTable;
 
 	public class HTTPGetOwner extends HTTPLite
 	{
 		public var id:String;
 		public var score:uint;
 		
-		public static const GET_USER:String = "getuser.php";
+		public static const GET_USER:String = "getuser";
 		public function HTTPGetOwner()
 		{
 			super(GET_USER);
@@ -26,10 +27,10 @@ package request
 		protected override function onComplete (e:Event):void{
 			//GameInit.addLabel("HTTPGet onComplete " + e.currentTarget.data , new Point(0,120));
 			var obj:Object = JSON.decode(e.currentTarget.data);
-			if(obj["id"])
+			if(obj.hasOwnProperty("id"))
 				id = obj["id"];
 			
-			if(obj["score"])
+			if(obj.hasOwnProperty("score"))
 				score = obj["score"];
 			
 			GameInit.statusBar.setScore(score);

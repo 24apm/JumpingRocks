@@ -1,27 +1,37 @@
 package views
 {
+	import event.ItemEvent;
+	
+	import flash.display.Sprite;
 	import flash.events.Event;
+	
 	import util.Util;
+	
+	import views.dodgingRock.DodgingRockView;
 	import config.AssetTranslationTable;
-	import specialObjects.Character;
 	import specialObjects.Rock;
 
-	public class LandView extends BasicView
+	public class SwampView extends BasicView
 	{
-		private var _char:Character;
 		private var _rocks:Vector.<Rock>;
-		public function LandView()
+		
+		
+		public function SwampView()
 		{
 			var classes:Vector.<Class> = new Vector.<Class>();
-			classes.push(SwampView, NinjaTimeView, SwampView, SwampView);
-			super(classes, AssetTranslationTable.BG_LAND);
+			classes.push(LandView, WeaponUpgradeView, LandView, DodgingRockView);
+			super(classes, AssetTranslationTable.MAP);
 		}
 		protected override function init(e:Event = null):void
 		{
-			super.init(e);
-			
+			super.init();
+			initBG();
 			initRocks();
 			
+		}
+		private function initBG():void
+		{
+	
 			//Top
 			_warps[0].x = (stage.stageWidth - _warps[0].width)* 0.5; 
 			_warps[0].y = 0;
@@ -38,6 +48,7 @@ package views
 			_warps[3].x = 0; 
 			_warps[3].y = (stage.stageHeight - _warps[3].height) * 0.5;
 		}
+
 		private function initRocks():void
 		{
 			_rocks = new Vector.<Rock>();
@@ -51,6 +62,12 @@ package views
 				rock.y = Util.rand(0, stage.stageHeight);
 			}
 			
+		}
+
+		public override function destruct():void
+		{
+
+			super.destruct();
 		}
 	}
 }

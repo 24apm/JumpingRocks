@@ -10,14 +10,20 @@ package
 	import flash.geom.Matrix3D;
 	import flash.system.Security;
 	import flash.ui.Keyboard;
+	import flash.utils.Dictionary;
 	import flash.utils.Timer;
 	
 	import javaScriptInterface.JavaScriptInterface;
 	
 	import request.HTTPGetOwner;
+	import request.PlatformUtil;
 	
-	import views.MapView;
+	import util.Tester;
+	import util.Util;
+	
+	import views.SwampView;
 	import views.ViewManager;
+
 
 	// by querying the LoaderInfo object, set the value of paramObj to the 
 	// to the value of the variable named myVariable passed from FlashVArs in the HTML
@@ -28,12 +34,7 @@ package
 	[SWF(backgroundColor="0x000000" ,width="760" ,height="630")] 
 	public class Main extends Sprite
 	{
-		
-		private var _map:MapView;
-		
-		public static var gameLayer:Sprite;
-		public static var uiLayer:Sprite;
-		public static var charLayer:Sprite;
+
 		
 		public function Main()
 		{	
@@ -51,23 +52,11 @@ package
 				MonsterDebugger.trace(this, "Hello World!");
 				AppVars.serverUrl =  "http://thecity.sfsu.edu/~hello608/flash/jumping_rocks/sandbox/";
 			}
-			
+			PlatformUtil.init();
 			
 
 			trace("Main loaded!");
-			gameLayer = new Sprite();
-			addChild(gameLayer);
-			
-			uiLayer = new Sprite();
-			addChild(uiLayer);
-			
-			charLayer = new Sprite();
-			addChild(charLayer);
-			
-			
-			
 			addChild(new GameInit());
-			
 			
 		}
 		

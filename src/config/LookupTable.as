@@ -1,4 +1,4 @@
-package 
+package config 
 {
 	public class LookupTable
 	{

@@ -1,5 +1,7 @@
 package views
 {
+	import util.Layer;
+
 	public class ViewManager
 	{
 		private static var _lastView:BasicView;
@@ -12,7 +14,7 @@ package views
 			if(_lastView != null)
 				_lastView.destruct();
 			_lastView = new ViewClass() as BasicView;
-			Main.gameLayer.addChild(_lastView);
+			Layer.gameLayer.addChild(_lastView);
 		}
 	}
 }

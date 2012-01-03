@@ -4,6 +4,7 @@ package views
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import specialObjects.Warp;
 
 	public class BasicView extends UIElement
 	{
@@ -11,22 +12,28 @@ package views
 		protected var _obstacleLayer:Sprite;
 		protected var _warpLayer:Sprite;
 		protected var _warps:Vector.<Warp>;
-		
+		protected var _bgImg:UILoader;
 		protected var _ViewClasses:Vector.<Class>;
-		public function BasicView(ViewClasses:Vector.<Class>)
+		
+		protected var _bgUrl:String;
+		public function BasicView(ViewClasses:Vector.<Class> = null, bgUrl:String = null)
 		{
 			super();
 			_ViewClasses = ViewClasses;
+			_bgUrl = bgUrl;
 		}
 		protected override function init(e:Event=null):void
 		{
 			super.init(e);
 			initLayer();
+			
 		}
 		private function initLayer():void
 		{
 			_bgLayer = new Sprite();
 			addChild(_bgLayer);
+			_bgImg = new UILoader(_bgUrl);
+			_bgLayer.addChild(_bgImg);
 			
 			_obstacleLayer = new Sprite();
 			addChild(_obstacleLayer);
@@ -35,31 +42,24 @@ package views
 			addChild(_warpLayer);
 			
 			_warps = new Vector.<Warp>();
-			for each(var ViewClass:Class in _ViewClasses)
-			{	var warp:Warp = new Warp(ViewClass);
-				_warpLayer.addChild(warp);
-				_warps.push(warp);
+			if(_ViewClasses)
+			{
+				for each(var ViewClass:Class in _ViewClasses)
+				{	var warp:Warp = new Warp(ViewClass);
+					_warpLayer.addChild(warp);
+					_warps.push(warp);
+				}
 			}
-			//Top
-			_warps[0].x = (stage.stageWidth - _warps[0].width)* 0.5; 
-			_warps[0].y = 0;
 			
-			// Right
-			_warps[1].x = (stage.stageWidth - _warps[1].width); 
-			_warps[1].y = (stage.stageHeight - _warps[1].height)* 0.5; 
-			
-			// Down
-			_warps[2].x = (stage.stageWidth - _warps[2].width) * 0.5;
-			_warps[2].y = (stage.stageHeight - _warps[2].height); 
-				
-			// Left
-			_warps[3].x = 0; 
-			_warps[3].y = (stage.stageHeight - _warps[3].height) * 0.5;
 		}
 
 		public override function destruct():void
 		{
-
+			if(_bgImg)
+			{
+				_bgImg.destruct();
+				_bgImg = null;
+			}
 			super.destruct();
 		}
 	}

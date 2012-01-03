@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <?php include ("php/config.php"); ?>
 <?php include ("php/fbsession.php");?>
 <?php include ("php/appVars.php");?>
@@ -58,8 +62,7 @@
         <!-- END Browser History required section -->  
           
 		 <script src="//connect.facebook.net/en_US/all.js"></script>
-        <script type="text/javascript" src="<? echo SERVER_URL; ?>js/facebook.js"></script>
-		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/platform.js"></script>
+
 		
         <script type="text/javascript" src="<? echo SERVER_URL; ?>swfobject.js"></script>
         <script type="text/javascript">
@@ -97,6 +100,8 @@
 
  		<body style="overflow: hidden">
  		<div id="fb-root"></div>
+		        <script type="text/javascript" src="<? echo SERVER_URL; ?>js/facebook.js"></script>
+		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/platform.js"></script>
 <script>
 		console.log("FB.Canvas.setSize");
 	FB.Canvas.setSize({ width: 760, height: 1400 });

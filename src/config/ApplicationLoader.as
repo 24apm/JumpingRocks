@@ -1,4 +1,4 @@
-package 
+package config 
 {
 	import flash.display.LoaderInfo;
 

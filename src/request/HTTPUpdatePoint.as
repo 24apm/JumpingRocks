@@ -9,6 +9,8 @@ package request
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLVariables;
+	import config.LookupTable;
+
 	public class HTTPUpdatePoint extends HTTPLite
 	{
 		import com.adobe.serialization.json.JSON;
