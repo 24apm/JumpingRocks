@@ -35,9 +35,9 @@
    }(document));
    
 
-function callback(token, param)
+function platformCallback(token, param)
 {
-	getElementById("Main").callback(token, param);
+	getElementById("Main").platformCallback(token, param);
 }
 function getMe()
 {
@@ -62,16 +62,16 @@ function getFriend()
 }
 function getFriendsData(token)
 {
-	console.log("get neighbor");
+	console.log("getFriendsData");
 	console.log(appVars.neighborsData);
 	
 	if(appVars.neighborsData.length <= 0)
 		return gameInit();
 	else
 	{
-		console.log("callback");
+		console.log("platformCallback");
 		console.log(appVars.neighborsData);
-		callback(token, appVars.neighborsData);
+		platformCallback(token, appVars.neighborsData);
 		return appVars.neighborsData;
 	}
 }
