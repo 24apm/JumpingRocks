@@ -7,22 +7,9 @@
       cookie     : true, // enable cookies to allow the server to access the session
       oauth      : true, // enable OAuth 2.0
       xfbml      : true  // parse XFBML
+	  ,frictionlessRequests : true
     });
-	
-	 
-    // Additional initialization code here
-    FB.login(function(response) {
-    console.log("LOGIN");
-	console.log(response);
-   if (response.authResponse) {
-     	console.log('Welcome!  Fetching your information.... ');
- 		
-   } else {
-     console.log('User cancelled login or did not fully authorize.');
-   }
- }, {scope: 'email'});
-		
-
+	resizeCanvas();
   };
 
   // Load the SDK Asynchronously
@@ -34,10 +21,19 @@
      d.getElementsByTagName('head')[0].appendChild(js);
    }(document));
    
-
+function resizeCanvas()
+{
+	console.log("FB.Canvas.setSize");
+	FB.Canvas.setSize({ width: 760, height: 1400 });
+}
 function platformCallback(token, param)
 {
-	getElementById("Main").platformCallback(token, param);
+	console.log(platformCallback);
+	console.log("token" + token);
+	console.log(param);
+	
+	
+	document.getElementById("Main").platformCallback(token, param);
 }
 function getMe()
 {
@@ -62,15 +58,10 @@ function getFriend()
 }
 function getFriendsData(token)
 {
-	console.log("getFriendsData");
-	console.log(appVars.neighborsData);
-	
 	if(appVars.neighborsData.length <= 0)
 		return gameInit();
 	else
 	{
-		console.log("platformCallback");
-		console.log(appVars.neighborsData);
 		platformCallback(token, appVars.neighborsData);
 		return appVars.neighborsData;
 	}

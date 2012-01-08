@@ -27,6 +27,7 @@ package request
 		}
 		protected override function onComplete (e:Event):void{
 			//GameInit.addLabel("HTTPGet onComplete " + e.currentTarget.data , new Point(0,120));
+			
 			var obj:Object = {};
 			try
 			{
@@ -42,7 +43,8 @@ package request
 			if(obj.hasOwnProperty("score"))
 				score = obj["score"];
 			
-			GameInit.statusBar.setScore(score);
+			
+			super.onComplete(e);
 		}  
 	}
 }

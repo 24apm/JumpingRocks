@@ -5,6 +5,3 @@ overflow: auto;
 text-align: center;
 background-color: white;
 }
-div.fb_dialog_advanced+div.fb_dialog_advanced {
-top:200px !important;
-}

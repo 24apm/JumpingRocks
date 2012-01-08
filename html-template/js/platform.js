@@ -5,9 +5,20 @@ function publish()
     message: 'Facebook for Websites is super-cool'});
 }
 
-function request()
+function request(p)
 {
 	console.log("request");
-     FB.ui({ method: 'apprequests', 
-     message: 'Here is a new Requests dialog...'});
+	console.log(p);
+     FB.ui(
+	 { method: 'apprequests', 
+	to:p,
+     message: 'Here is a new Requests dialog...'},
+	 
+	 requestCallback);
+	 
+}
+function requestCallback(response)
+{
+	console.log("request");
+	console.log(response);
 }

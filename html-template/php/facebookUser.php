@@ -1,14 +1,14 @@
 <?php
 require 'facebook-php-sdk-dafef11/src/facebook.php';
-
+include_once("config.php");
 $facebook = new Facebook(array(
-  'appId'  => '249365405125992',
-  'secret' => 'a92a0f19fd1f5b11779622c8b0324acd',
+  'appId'  => APP_ID,
+  'secret' => APP_SECRET,
 ));
 
  //See if there is a user from a cookie
 $user = $facebook->getUser();
-if(!isset($_SESSION))
+if(!isset($_SESSION) || $_SESSION['currentUserId'] != $user)
 {
 	
 	$_SESSION['currentUserId'] = $user;
@@ -35,7 +35,7 @@ if ($user) {
   }
 }
 // Login or logout url will be needed depending on current user state.
-$perm = array("scope"=>"email,read_stream");
+$perm = array("scope"=>"email,read_stream,publish_stream");
 if ($user) {
   $logoutUrl = $facebook->getLogoutUrl($perm);
 } else {

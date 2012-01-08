@@ -2,6 +2,8 @@ package
 {
 	import com.demonsters.debugger.MonsterDebugger;
 	
+	import config.LookupTable;
+	
 	import flash.display.LoaderInfo;
 	import flash.display.Sprite;
 	import flash.display.StageScaleMode;
@@ -53,7 +55,7 @@ package
 				AppVars.serverUrl =  "http://thecity.sfsu.edu/~hello608/flash/jumping_rocks/sandbox/";
 			}
 			PlatformUtil.init();
-			
+			LookupTable.init();
 
 			trace("Main loaded!");
 			addChild(new GameInit());

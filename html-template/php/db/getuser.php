@@ -56,5 +56,5 @@
 		$user = "";
 	}
 	mysql_close();
-	echo json_encode($user);
+	return json_encode($user);
 ?>

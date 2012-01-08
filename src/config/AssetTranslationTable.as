@@ -11,6 +11,10 @@ package config
 		
 		public static var ANI_FIRE:String = '../asset/animation/fire.swf';
 		public static var ANI_EGG:String 	= '../asset/animation/egg.swf';
+		
+		public static var ANI_FIREBOY:String 	= '../asset/animation/fireboy.swf';
+		
+		
 		public static var BLACKSMITH:String = '../asset/animation/blacksmith.swf';
 		
 		public static var ARMY_GREEN:String = '../asset/img/army_green.png';

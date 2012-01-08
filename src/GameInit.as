@@ -22,6 +22,8 @@ package
 	
 	import javaScriptInterface.JavaScriptInterface;
 	
+	import org.osmf.events.TimeEvent;
+	
 	import request.HTTPGetOwner;
 	import request.HTTPUpdatePoint;
 	import request.PlatformUtil;
@@ -45,13 +47,10 @@ package
 	public class GameInit extends UIElement
 	{
 		public static var character:Character;
-		private var _inventory:UIInventory;
-		public static var statusBar:StatusBar;
+		private var _loadFriendTimer:Timer;
 		private var _fireAni:FireAnimation;
 		
 		
-		
-
 		public function GameInit()
 		{
 			super();
@@ -63,11 +62,16 @@ package
 			addChild(new Layer);
 			
 			//initChar();
-			initUI();
-			ViewManager.loadView(Setting.STARTING_VIEW);
+			
+			//initGameUI();
 			initUser();
 			initNeighbors();
 			
+		}
+		private function initGame():void
+		{
+			ViewManager.loadView(Setting.STARTING_VIEW);
+			Layer.uiLayer.addChild(new GameUI());
 		}
 		private function initChar():void
 		{
@@ -75,43 +79,58 @@ package
 			Layer.charLayer.addChild(character);
 			stage.addEventListener(MouseEvent.CLICK, moveCharacter);
 		}
-		private function initUI():void
-		{
-			_inventory = new UIInventory();
-			Layer.uiLayer.addChild(_inventory);
-			_inventory.x = stage.stageWidth - _inventory.width;
-			_inventory.y = (stage.stageHeight - _inventory.height) * 0.5;
-			_inventory.visible = false;
-			
-			statusBar = new StatusBar();
-			addChild(statusBar);
-			
-			var ownerStats:HTTPGetOwner = new HTTPGetOwner ();
-			
-		}
+
 		private function setNeighbors(params:Object):void
 		{
+			stopFriendTimer();
 			if(params != null)
 			{
+				
 				for each(var neighborData:Object in params)
 				{
 					LookupTable.neighborsList.push(new NeighborData(neighborData));
 				}
-				if(AppVars.showFriends == true)
-				{
-					for each(var neighbor:NeighborData in LookupTable.neighborsList)
-					{
-						var img:Rock = new Rock(neighbor.image);
-						Layer.gameLayer.addChild(img);
-						img.x = Util.rand(0, stage.stageWidth);
-						img.y = Util.rand(0, stage.stageHeight);
-					}
-				}
+				initGame();
+				if(AppVars.showFriends)
+					showNeighbors();
+			}
+			
+		}
+		private function showNeighbors():void
+		{
+			for each(var neighbor:NeighborData in LookupTable.neighborsList)
+			{
+				var img:Rock = new Rock(neighbor.pic_square);
+				Layer.gameLayer.addChild(img);
+				img.x = Util.rand(0, stage.stageWidth);
+				img.y = Util.rand(0, stage.stageHeight);
+			}
+		}
+		private function startFriendTimer():void
+		{
+			
+			_loadFriendTimer = new Timer(1000,7);
+			_loadFriendTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
+			_loadFriendTimer.start();
+			
+		}
+		private function onTimerComplete(e:Event):void
+		{
+			stopFriendTimer();
+			initGame();
+		}
+		private function stopFriendTimer():void
+		{
+			if(_loadFriendTimer)
+			{
+				_loadFriendTimer.stop();
+				_loadFriendTimer.removeEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
+				_loadFriendTimer = null;
 			}
 		}
 		private function initNeighbors():void
 		{
-			LookupTable.neighborsList = new Vector.<NeighborData>();
+			startFriendTimer();
 			PlatformUtil.call("getFriendsData", setNeighbors);
 		}
 		private function initUser():void

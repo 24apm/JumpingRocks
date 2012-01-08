@@ -1,9 +1,10 @@
 <?php
 	session_start();
+	session_unset();
 ?>
 
 <?php include ("php/config.php"); ?>
-<?php include ("php/fbsession.php");?>
+<?php include ("php/facebookUser.php");?>
 <?php include ("php/appVars.php");?>
 <?php 
 	$MainSwf = "Main.swf";
@@ -19,7 +20,7 @@
 	{
 		$showFriends = false;
 	}
-	
+	//$showFriends = true;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0014)about:internet -->
@@ -69,51 +70,16 @@
 
  		<body style="overflow: hidden">
  		<div id="fb-root"></div>
-		        <script type="text/javascript" src="<? echo SERVER_URL; ?>js/facebook.js"></script>
+		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/facebook.js"></script>
 		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/platform.js"></script>
-		<script>
-			console.log("FB.Canvas.setSize");
-		FB.Canvas.setSize({ width: 760, height: 1400 });
-		</script>
-       
  		<script type="text/javascript" src="<? echo SERVER_URL; ?>js/payment.js"></script>
+		
  		<p> <a onclick="placeOrder(); return false;">Buy Stuff</a></p>
         <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
              JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
              when JavaScript is disabled.
         -->
-		    <script type="text/javascript" src="<? echo SERVER_URL; ?>swfobject.js"></script>
-        <script type="text/javascript">
-		
-		
-            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
-            var swfVersionStr = "10.2.0";
-            // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
-            var xiSwfUrlStr = "playerProductInstall.swf";
-            var flashvars = {};
-			flashvars.serverUrl = "<? echo SERVER_URL; ?>";
-			flashvars.showFriends = "<? echo $showFriends; ?>";
-			
-            var params = {};
-            params.quality = "high";
-            params.bgcolor = "#000000";
-            params.allowscriptaccess = "sameDomain";
-            params.allowfullscreen = "true";
-            var attributes = {};
-            attributes.id = "Main";
-            attributes.name = "Main";
-            attributes.align = "middle";
-			
-			console.log("FLASH PARAMS");
-			console.log(flashvars);
-            swfobject.embedSWF(
-                "<? echo $MainSwf ?>", "flashContent", 
-                "760", "630", 
-                swfVersionStr, xiSwfUrlStr, 
-                flashvars, params, attributes);
-            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
-            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
-        </script>
+	
         <div id="flashContent">
             <p>
                 To view this page ensure that Adobe Flash Player version 
@@ -155,5 +121,38 @@
                 <!--<![endif]-->
             </object>
         </noscript>     
+			    <script type="text/javascript" src="<? echo SERVER_URL; ?>swfobject.js"></script>
+        <script type="text/javascript">
+		
+		
+            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+            var swfVersionStr = "10.2.0";
+            // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+            var xiSwfUrlStr = "playerProductInstall.swf";
+            var flashvars = {};
+			flashvars.serverUrl = "<? echo SERVER_URL; ?>";
+			flashvars.showFriends = "<? echo $showFriends; ?>";
+			
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#000000";
+            params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+			params.wmode = "transparent";
+            var attributes = {};
+            attributes.id = "Main";
+            attributes.name = "Main";
+            attributes.align = "middle";
+			
+			console.log("FLASH PARAMS");
+			console.log(flashvars);
+            swfobject.embedSWF(
+                "<? echo $MainSwf ?>", "flashContent", 
+                "760", "630", 
+                swfVersionStr, xiSwfUrlStr, 
+                flashvars, params, attributes);
+            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+        </script>
    </body>
 </html>

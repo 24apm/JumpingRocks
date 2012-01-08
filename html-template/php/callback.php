@@ -19,7 +19,8 @@
 */
 
 // Enter your app information below
-$app_secret = 'a92a0f19fd1f5b11779622c8b0324acd';
+include_once("config.php");
+$app_secret = APP_SECRET;
 
 // Prepare the return data array
 $data = array('content' => array());

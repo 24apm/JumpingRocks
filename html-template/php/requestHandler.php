@@ -1,19 +1,28 @@
 <?php
 	session_start();
-	print_r("REQUEST: ". $_REQUEST, true);
-
+	include_once("db/baseModel.php");
+	
 	if(!isset($_REQUEST["requestType"]))
 	{
 		echo "Error: no requestType";
 		die();
 	}
+	$baseModel = new BaseModel();
+	$queryResult;
+	
 	switch($_REQUEST["requestType"])
 	{
 		case "getuser":
-			include "db/getuser.php";
+			$queryResult = $baseModel->getUser();
+			break;
+		case "updatepoint";
+			$queryResult = $baseModel->updatePoint();
 			break;
 		default:
-			echo "Error: no requestType";
+			$queryResult = "Error: no requestType";
 			break;
 	}
+
+	echo(json_encode($queryResult));
+
 ?>
