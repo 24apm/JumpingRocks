@@ -71,7 +71,7 @@ package
 		private function initGame():void
 		{
 			ViewManager.loadView(Setting.STARTING_VIEW);
-			Layer.uiLayer.addChild(new GameUI());
+//			Layer.uiLayer.addChild(new GameUI());
 		}
 		private function initChar():void
 		{
@@ -108,8 +108,12 @@ package
 		}
 		private function startFriendTimer():void
 		{
-			
-			_loadFriendTimer = new Timer(1000,7);
+			var loops:int = 7;
+			if(AppVars.debug)
+			{
+				loops = 1;
+			}
+			_loadFriendTimer = new Timer(1000,loops);
 			_loadFriendTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
 			_loadFriendTimer.start();
 			

@@ -53,6 +53,7 @@ package
 				MonsterDebugger.initialize(this);
 				MonsterDebugger.trace(this, "Hello World!");
 				AppVars.serverUrl =  "http://thecity.sfsu.edu/~hello608/flash/jumping_rocks/sandbox/";
+				AppVars.debug = true;
 			}
 			PlatformUtil.init();
 			LookupTable.init();

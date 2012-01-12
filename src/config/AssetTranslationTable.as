@@ -21,7 +21,8 @@ package config
 		public static var ARMY_BLUE:String = '../asset/img/army_blue.png';
 		public static var ARMY_RED:String = '../asset/img/army_red.png';
 		public static var ARMY_YELLOW:String = '../asset/img/army_yellow.png';
-		
+		public static const BG_CHICKEN:String= '../asset/img/chicken_bg.jpg';		
+		public static const CHICKEN_WHITE:String='../asset/img/chicken_white.swf';
 		
 		public function AssetTranslationTable()
 		{
