@@ -2,10 +2,6 @@
 	session_start();
 	session_unset();
 ?>
-
-<?php include ("php/config.php"); ?>
-<?php include ("php/facebookUser.php");?>
-<?php include ("php/appVars.php");?>
 <?php 
 	$MainSwf = "Main.swf";
 	if(isset($_REQUEST["debug"]))
@@ -22,6 +18,9 @@
 	}
 	//$showFriends = true;
 ?>
+<?php include ("php/config.php"); ?>
+<?php include ("php/FacebookUser.php"); $facebookUser = new FacebookUser();?>
+<?php include ("php/appVars.php");?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- saved from url=(0014)about:internet -->
 

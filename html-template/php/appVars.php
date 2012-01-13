@@ -10,8 +10,8 @@
 <script>
 var appVars =
 {
-	neighborIds		: 	JSON.parse('<?php echo $_SESSION['neighborIds'];?>'),
-	neighborsData 	: 	JSON.parse('<?php echo $_SESSION['neighborData'];?>'),
+	neighborIds		: 	JSON.parse('<?php echo $_SESSION['neighborIdsJSON'];?>'),
+	neighborsData 	: 	JSON.parse('<?php echo $_SESSION['neighborDataJSON'];?>'),
 	currentUserId 	: 	"<?php echo $_SESSION['currentUserId'];?>",
 	serverUrl		: 	"<?php echo SERVER_URL; ?>"
 };

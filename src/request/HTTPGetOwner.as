@@ -17,7 +17,7 @@ package request
 		public var id:String;
 		public var score:uint;
 		
-		public static const GET_USER:String = "getuser";
+		public static const GET_USER:String = "getCurrentUser";
 		public function HTTPGetOwner()
 		{
 			super(GET_USER);
