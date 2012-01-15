@@ -3,9 +3,6 @@ package specialObjects
 	import flash.display.Shape;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.geom.Rectangle;
-	
-	import views.ViewManager;
 	
 
 	public class Warp extends UIElement

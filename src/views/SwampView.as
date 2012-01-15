@@ -1,17 +1,22 @@
 package views
 {
+	import config.AssetTranslationTable;
+	
 	import event.ItemEvent;
 	
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
+	import specialObjects.Rock;
+	
 	import util.Util;
 	
+	import view.BasicView;
+	import view.WarpView;
+	
 	import views.dodgingRock.DodgingRockView;
-	import config.AssetTranslationTable;
-	import specialObjects.Rock;
 
-	public class SwampView extends BasicView
+	public class SwampView extends WarpView
 	{
 		private var _rocks:Vector.<Rock>;
 		

@@ -34,11 +34,13 @@ package views.dodgingRock
 	import util.Layer;
 	import util.Util;
 	
-	import views.BasicView;
+	import view.BasicView;
+	import view.ViewManager;
+	import view.WarpView;
+	
 	import views.SwampView;
-	import views.ViewManager;
 
-	public class DodgingRockView extends BasicView
+	public class DodgingRockView extends WarpView
 	{
 		private static const MAX_SPEED:int = 3;
 		

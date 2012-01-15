@@ -15,7 +15,10 @@ package views
 	
 	import util.Util;
 	
-	public class ArmyBattleView extends BasicView
+	import view.BasicView;
+	import view.WarpView;
+	
+	public class ArmyBattleView extends WarpView
 	{
 		private var _blueVec:Vector.<UIArmyUnit>;
 		private var _redVec:Vector.<UIArmyUnit>;

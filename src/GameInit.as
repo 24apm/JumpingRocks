@@ -20,10 +20,12 @@ package
 	import specialObjects.FireAnimation;
 	import specialObjects.Rock;
 	
+	import style.Style;
+	
 	import util.Layer;
 	import util.Util;
 	
-	import views.ViewManager;
+	import view.ViewManager;
 	
 	
 	public class GameInit extends UIElement
@@ -132,7 +134,7 @@ package
 
 		public static function addLabel(text:String, point:Point):void
 		{
-			var label:UILabel = new UILabel(text);
+			var label:UILabel = new UILabel(text,  Style.labelStyle);
 			Layer.uiLayer.addChild(label);
 			label.x = point.x;
 			label.y = point.y;

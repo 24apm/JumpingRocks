@@ -3,8 +3,11 @@ package views
 	import flash.events.Event;
 	
 	import specialObjects.UIWeapon;
+	
+	import view.BasicView;
+	import view.WarpView;
 
-	public class WeaponUpgradeView extends BasicView
+	public class WeaponUpgradeView extends WarpView
 	{
 		private var _weapon:UIWeapon;
 		public function WeaponUpgradeView()

@@ -1,15 +1,13 @@
-package views 
+package view 
 {
 	import config.AssetTranslationTable;
 	
-	import flash.display.Loader;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.events.MouseEvent;
 	
 	import specialObjects.Warp;
 
-	public class BasicView extends UIElement
+	public class WarpView extends BasicView
 	{
 		protected var _bgLayer:Sprite;
 		protected var _obstacleLayer:Sprite;
@@ -19,7 +17,7 @@ package views
 		protected var _ViewClasses:Vector.<Class>;
 		
 		protected var _bgUrl:String;
-		public function BasicView(ViewClasses:Vector.<Class> = null, bgUrl:String = null)
+		public function WarpView(ViewClasses:Vector.<Class> = null, bgUrl:String = null)
 		{
 			super();
 			_ViewClasses = ViewClasses;

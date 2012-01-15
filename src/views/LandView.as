@@ -1,12 +1,18 @@
 package views
 {
-	import flash.events.Event;
-	import util.Util;
 	import config.AssetTranslationTable;
+	
+	import flash.events.Event;
+	
 	import specialObjects.Character;
 	import specialObjects.Rock;
+	
+	import util.Util;
+	
+	import view.BasicView;
+	import view.WarpView;
 
-	public class LandView extends BasicView
+	public class LandView extends WarpView
 	{
 		private var _char:Character;
 		private var _rocks:Vector.<Rock>;

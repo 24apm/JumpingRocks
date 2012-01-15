@@ -18,9 +18,10 @@ package views.jumpingEggs
 	import util.Layer;
 	import util.Util;
 	
-	import views.BasicView;
+	import view.BasicView;
+	import view.WarpView;
 
-	public class JumpingEggView extends BasicView
+	public class JumpingEggView extends WarpView
 	{
 		
 		

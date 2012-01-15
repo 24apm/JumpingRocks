@@ -2,16 +2,21 @@ package views
 {
 	import com.greensock.TweenLite;
 	
+	import config.AssetTranslationTable;
+	
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
 	import org.osmf.events.TimeEvent;
-	import config.AssetTranslationTable;
+	
 	import specialObjects.FireAnimation;
+	
+	import view.BasicView;
+	import view.WarpView;
 
-	public class NinjaTimeView extends BasicView
+	public class NinjaTimeView extends WarpView
 	{
 	//	private static const TICKS:int = 3000;
 		private var _target:UILoader;

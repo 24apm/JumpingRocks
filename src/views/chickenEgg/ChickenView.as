@@ -11,7 +11,7 @@ package views.chickenEgg
 	import ui.Scroller;
 	import ui.ScrollerArrows;
 	
-	import views.BasicView;
+	import view.BasicView;
 	
 	public class ChickenView extends BasicView
 	{
@@ -19,7 +19,7 @@ package views.chickenEgg
 		
 		public function ChickenView(ViewClasses:Vector.<Class>=null, bgUrl:String=null)
 		{
-			super(ViewClasses, bgUrl);
+			super(bgUrl);
 		}
 		protected override function init(e:Event=null):void
 		{
@@ -29,11 +29,11 @@ package views.chickenEgg
 		   
 			var vec:Vector.<Scrollable> = new Vector.<Scrollable>();
 			for(var i:Number=0;i<99;i++){
-				var scrollable:Scrollable = new Scrollable(new UILoader(AssetTranslationTable.CHICKEN_WHITE));
+				var scrollable:Scrollable = new Scrollable(new UILoader(AssetTranslationTable.CHICKEN_WHITE), i.toString());
 				vec.push(scrollable);
 			}
 			
-			var config:ScrollerConfig = new ScrollerConfig(new Point(110,150), new Point(350,470),3,3,3);
+			var config:ScrollerConfig = new ScrollerConfig(new Point(110,150), new Point(350,470),3,3,7);
 			
 			_scroller = new Scroller(vec,config);
 			
