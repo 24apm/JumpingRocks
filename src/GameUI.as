@@ -12,8 +12,6 @@ package
 	import request.HTTPGetOwner;
 	import request.HTTPLite;
 	
-	import specialObjects.JumpingEgg;
-	
 	import style.RectangleStyle;
 	
 	import ui.Minimap;
@@ -24,7 +22,6 @@ package
 	import ui.UIInventory;
 	
 	import util.DrawShape;
-	import util.Layer;
 	import util.Util;
 
 	public class GameUI extends UIElement
@@ -64,12 +61,12 @@ package
 			statusBar = new StatusBar();
 			addChild(statusBar);
 			
-			var http:HTTPGetOwner = new HTTPGetOwner ();
-			http.addEventListener(HTTPLite.HTTP_EVENT, setStatusBar);
-			function setStatusBar():void
-			{
-				GameUI.statusBar.setScore(http.score);
-			}
+//			var http:HTTPGetOwner = new HTTPGetOwner ();
+//			http.addEventListener(HTTPLite.HTTP_EVENT, setStatusBar);
+//			function setStatusBar():void
+//			{
+//				GameUI.statusBar.setScore(http.score);
+//			}
 		}
 		private function generateNeighborScrollables():Vector.<Scrollable>
 		{

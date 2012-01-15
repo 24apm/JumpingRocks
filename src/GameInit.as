@@ -6,41 +6,23 @@ package
 	import config.LookupTable;
 	import config.Setting;
 	
-	import event.ItemEvent;
-	
-	import flash.display.LoaderInfo;
-	import flash.display.Sprite;
-	import flash.display.Stage;
 	import flash.events.Event;
-	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
-	import flash.external.ExternalInterface;
 	import flash.geom.Point;
-	import flash.ui.Keyboard;
 	import flash.utils.Timer;
 	
-	import javaScriptInterface.JavaScriptInterface;
-	
-	import org.osmf.events.TimeEvent;
-	
 	import request.HTTPGetOwner;
-	import request.HTTPUpdatePoint;
+	import request.HTTPLite;
 	import request.PlatformUtil;
 	
 	import specialObjects.Character;
 	import specialObjects.FireAnimation;
 	import specialObjects.Rock;
-	import specialObjects.UIBlackSmith;
-	
-	import ui.StatusBar;
-	import ui.UIInventory;
 	
 	import util.Layer;
 	import util.Util;
 	
-	import views.ArmyBattleView;
-	import views.SwampView;
 	import views.ViewManager;
 	
 	
@@ -134,13 +116,18 @@ package
 		}
 		private function initNeighbors():void
 		{
+			
 			startFriendTimer();
 			PlatformUtil.call("getFriendsData", setNeighbors);
 		}
 		private function initUser():void
 		{
-			LookupTable.currentUserId = String(PlatformUtil.getMyData());
-			var currentUserId:String = LookupTable.currentUserId;
+			var http:HTTPGetOwner = new HTTPGetOwner ();
+			http.addEventListener(HTTPLite.HTTP_EVENT, setUserData);
+			function setUserData():void
+			{
+				LookupTable.currentUserId = http.id;
+			}
 		}
 
 		public static function addLabel(text:String, point:Point):void

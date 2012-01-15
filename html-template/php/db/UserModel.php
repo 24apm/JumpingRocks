@@ -4,7 +4,7 @@
 	class UserModel extends BaseModel
 	{
 	
-		public function getCurrentUser()
+		public function getCurrentUser($param = null)
 		{
 			if(isset($_SESSION['currentUserId']))
 			{
@@ -16,9 +16,7 @@
 				echo "bad request in getuser.php: no session";
 				die();
 			}
-			$this->connectDB();
-			$currentUser = $this->_getUser();
-			print_r($currentUser);
+			$currentUser = $this->getUser($param);
 			if($currentUser == null)
 			{
 
@@ -29,10 +27,17 @@
 				$last_name 		=	$me['last_name'];
 				$gender		 	= 	$me['gender'];
 				$email		 	= 	$me['email'];
+
 				$currentTime = time();
+				$inventory = array();
+				$inventory["chicken"] = array();
+				$inventory["chicken_count"] = "0";
+				$inventory["egg"] = array();
+				$inventory["egg_count"] = "0";
+				$inventory = json_encode($inventory);
 				
-				$query = "INSERT INTO user (id, first_name, last_name, gender, email, score, last_login, login_count) 
-									VALUES ($id, '$first_name', '$last_name', '$gender', '$email',  0, FROM_UNIXTIME($currentTime), login_count = login_count + 1)";
+				$query = "INSERT INTO user (id, first_name, last_name, gender, email, score, last_login, login_count, inventory) 
+									VALUES ($id, '$first_name', '$last_name', '$gender', '$email',  0, FROM_UNIXTIME($currentTime), login_count = login_count + 1, '$inventory')";
 				$result = mysql_query($query);
 				if($result)
 				{
@@ -53,17 +58,33 @@
 				$result = mysql_query($query);
 
 			}
-			$this->closeDB();
 			return $currentUser;
 		}
-		public function getUser()
-		{
-			$this->connectDB();
-			$user = _getUser();
-			$this->closeDB();
-			return $user;
+		public function updateUser($paramArray = null)
+		{	
+			$result;
+			if($paramArray == null && count($paramArray) > 0)
+			{
+				$keys = array();
+				$values = array();
+				foreach($paramArray as $key => $value)
+				{
+					$keys[] = $key;
+					$values[] = $value;
+				}
+				$keys = implode($keys);
+				$values = implode($values);
+				$query = "INSERT INTO user ($keys) 
+										VALUES ($values)";
+				$result = mysql_query($query);
+			}
+			else
+			{
+				$result = false;
+			}
+			return $result;
 		}
-		private function _getUser()
+		public function getUser($param = null)
 		{
 			// set in facebookUser.php
 
@@ -84,9 +105,15 @@
 				die();
 			}
 			
-			$query="SELECT id, score FROM user WHERE id = $id";
-			//print_r($query . "<br/>");
-			
+			if($param == null)
+			{
+				$query="SELECT id, score FROM user WHERE id = $id";
+			}
+			else
+			{
+				$query="SELECT $param FROM user WHERE id = $id";
+			}
+				
 			$result=mysql_query($query) or die(mysql_error());
 			// user doesn't exist yet
 			$user;

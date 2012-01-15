@@ -9,28 +9,50 @@
 	
 	$queryResult;
 	
+	include_once("db/BaseModel.php");
+	BaseModel::connectDB();
 	switch($_REQUEST["requestType"])
 	{
 		case "getCurrentUser":
 			include_once("db/UserModel.php");
-			$userModel = new UserModel();
-			$queryResult = $userModel->getCurrentUser();
+			$model = new UserModel();
+			$queryResult = $model->getCurrentUser();
 			break;
 		case "getuser":
 			include_once("db/UserModel.php");
-			$userModel = new UserModel();
-			$queryResult = $userModel->getUser();
+			$model = new UserModel();
+			$queryResult = $model->getUser();
 			break;
 		case "updatepoint";
 			include_once("db/ActionModel.php");
-			$actionModel = new ActionModel();		
-			$queryResult = $actionModel->updatePoint();
+			$model = new ActionModel();		
+			$queryResult = $model->updatePoint();
+			break;
+		case "addChicken";
+			include_once("db/ActionModel.php");
+			$model = new ActionModel();		
+			$queryResult = $model->addChicken();
+			break;	
+		case "addEgg";
+			include_once("db/ActionModel.php");
+			$model = new ActionModel();		
+			$queryResult = $model->addEgg();
+			break;
+		case "hatchEgg";
+			include_once("db/ActionModel.php");
+			$model = new ActionModel();		
+			$queryResult = $model->hatchEgg();
+			break;
+		case "layEgg";
+			include_once("db/ActionModel.php");
+			$model = new ActionModel();		
+			$queryResult = $model->layEgg();
 			break;
 		default:
 			$queryResult = "Error: no requestType";
 			break;
 	}
-
+	BaseModel::closeDB();
 	echo(json_encode($queryResult));
 
 ?>
