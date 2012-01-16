@@ -10,8 +10,6 @@ package views.chickenEgg
 	import flash.events.Event;
 	import flash.geom.Point;
 	
-	import flashx.textLayout.formats.TextAlign;
-	
 	import request.HTTPHatchEgg;
 	import request.HTTPLayEgg;
 	
@@ -28,16 +26,15 @@ package views.chickenEgg
 	import view.BasicView;
 	import view.ViewManager;
 	
-	public class ChickenView extends BasicView
+	public class EggView extends BasicView
 	{
 		private var _scroller:Scroller;
 		private var _title:UILabel;
 		
-		private var _chickenBook:UILoaderButton;
-		
+		private var _book:UILoaderButton;
 		private var _nextPage:UILoaderButton;
-		
-		public function ChickenView(bgUrl:String=null)
+			
+		public function EggView(bgUrl:String=null)
 		{
 			super(bgUrl);
 		}
@@ -46,30 +43,29 @@ package views.chickenEgg
 			super.init(e);
 			this._bgImg = new UILoader(AssetTranslationTable.BG_CHICKEN);
 			addChild(_bgImg);
-		   
+			
 			
 			// title
-			_title = new UILabel("Chicken" , Style.labelStyleHeader);
+			_title = new UILabel("Egg" , Style.labelStyleHeader);
 			addChild(_title);
-			_title.autoSize = TextAlign.LEFT;
 			_title.x = 50;
 			_title.y = 30;
 			
 			
 			// buttons
-			_chickenBook = new UILoaderButton(AssetTranslationTable.CHICKEN_BOOK, onBookClick);
-			addChild(_chickenBook);
-			_chickenBook.x = 600;
-			_chickenBook.y = 330;
-
+			_book = new UILoaderButton(AssetTranslationTable.EGG_BOOK, onBookClick);
+			addChild(_book);
+			_book.x = 600;
+			_book.y = 330;
+			
 			_nextPage = new UILoaderButton(AssetTranslationTable.EGG_BLANK, onBlankClick);
 			addChild(_nextPage);
 			_nextPage.x = 600;
 			_nextPage.y = 460;
 			
-			// scroller	
-			var config:ScrollerConfig = new ScrollerConfig(new Point(110,150), new Point(350,470),3,3,7);	
-			_scroller = new Scroller(LookupTable.inventoryChicken,config);
+			// scroller
+			var config:ScrollerConfig = new ScrollerConfig(new Point(110,150), new Point(350,470),3,3,7);
+			_scroller = new Scroller(LookupTable.inventoryEgg,config);
 			
 			var scrollerArrows:ScrollerArrows = new ScrollerArrows(_scroller, new ScrollerArrowsConfig(10));
 			
@@ -79,24 +75,26 @@ package views.chickenEgg
 			scrollerArrows.y=100;
 			
 			
-//			addChicken();
-		}
-		private function onBlankClick():void
-		{
-			ViewManager.loadView(EggView);
+//			addEgg();
 		}
 		private function onBookClick():void
 		{
-			ViewManager.loadView(ChickenEncyclopediaView);
+			ViewManager.loadView(ChickenView);
 		}
-		private function addChicken():void
+		private function onBlankClick():void
 		{
-			_scroller.addScrollables(LookupTable.inventoryChicken);
+			ViewManager.loadView(ChickenView);
+		}
+		private function addEgg():void
+		{
+			_scroller.addScrollables(LookupTable.inventoryEgg);
 		}
 		private function onItemClick(e:ItemEvent):void
 		{
 			var scrollable:AnimalScrollable = e.target as AnimalScrollable;
-
+			_scroller.removeScrollableById(scrollable.id);
+			InventoryUtil.removeEggById(scrollable.id);
+			
 			switch(scrollable.itemData.type)
 			{
 				case LookupTable.CHICKEN:
@@ -109,8 +107,6 @@ package views.chickenEgg
 					trace("Not supported: " + scrollable.itemData.type);
 					break;	
 			}
-		
-			
-		}
+		}		
 	}
 }

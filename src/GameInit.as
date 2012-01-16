@@ -23,6 +23,7 @@ package
 	import style.Style;
 	
 	import util.Layer;
+	import util.ServerUtil;
 	import util.Util;
 	
 	import view.ViewManager;
@@ -48,10 +49,12 @@ package
 			//initChar();
 			
 			//initGameUI();
+
 			initUser();
 			initNeighbors();
 			
 		}
+
 		private function initGame():void
 		{
 			ViewManager.loadView(Setting.STARTING_VIEW);
@@ -129,12 +132,13 @@ package
 			function setUserData():void
 			{
 				LookupTable.currentUserId = http.id;
+				new ServerUtil(http.inventory);
 			}
 		}
 
 		public static function addLabel(text:String, point:Point):void
 		{
-			var label:UILabel = new UILabel(text,  Style.labelStyle);
+			var label:UILabel = new UILabel(text,  Style.labelStyleBasic);
 			Layer.uiLayer.addChild(label);
 			label.x = point.x;
 			label.y = point.y;

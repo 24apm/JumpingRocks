@@ -98,7 +98,7 @@
 			$userModel = new UserModel();
 			$currentUser = $userModel->getCurrentUser("id,inventory");
 			$inventory = json_decode($currentUser['inventory'],true);
-			$time = time();	
+			$time = round(microtime(true)*1000);	
 				
 				/*
 			print_r("<pre>");
@@ -128,7 +128,7 @@
 			}
 			// if current time pass the stored time
 
-			$inventory[$type][$index]["ready_in"] = time() + 5*60;
+			$inventory[$type][$index]["ready_in"] = round(microtime(true)*1000) + 5*60*1000;
 			$inventory = json_encode($inventory);
 			$userId = $currentUser['id'];
 			$query="UPDATE user SET inventory = '$inventory' WHERE id=$userId";
@@ -151,7 +151,7 @@
 			$userModel = new UserModel();
 			$currentUser = $userModel->getCurrentUser("id,inventory");
 			$inventory = json_decode($currentUser['inventory'],true);
-			$time = time();	
+			$time = round(microtime(true)*1000);	
 				
 			if(!(isset($inventory[$type][$index])))
 			{
@@ -192,10 +192,10 @@
 			$currentUser = $userModel->getCurrentUser("id,inventory");
 			
 			$inventory = json_decode($currentUser['inventory'],true);
-			$time = time();
+			$time = round(microtime(true)*1000);
 			$typeKey = $type."_count";
 			$inventory[$typeKey] = $inventory[$typeKey] + 1;
-			$inventory[$type][$inventory[$typeKey]]["ready_in"] = $time + 5*60;
+			$inventory[$type][$inventory[$typeKey]]["ready_in"] = $time + 5*60*1000;
 			$inventory = json_encode($inventory);
 			$userId = $currentUser['id'];
 

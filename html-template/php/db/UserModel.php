@@ -28,7 +28,7 @@
 				$gender		 	= 	$me['gender'];
 				$email		 	= 	$me['email'];
 
-				$currentTime = time();
+				$currentTime = round(microtime(true)*1000);
 				$inventory = array();
 				$inventory["chicken"] = array();
 				$inventory["chicken_count"] = "0";
@@ -37,7 +37,7 @@
 				$inventory = json_encode($inventory);
 				
 				$query = "INSERT INTO user (id, first_name, last_name, gender, email, score, last_login, login_count, inventory) 
-									VALUES ($id, '$first_name', '$last_name', '$gender', '$email',  0, FROM_UNIXTIME($currentTime), login_count = login_count + 1, '$inventory')";
+									VALUES ($id, '$first_name', '$last_name', '$gender', '$email',  0, $currentTime, login_count = login_count + 1, '$inventory')";
 				$result = mysql_query($query);
 				if($result)
 				{
@@ -51,10 +51,12 @@
 			else
 			{
 				// update last login
-				$currentTime = time();
+				$currentTime = round(microtime(true)*1000);
 				$userId 	= $currentUser['id'];
 
-				$query="UPDATE user SET last_login = FROM_UNIXTIME($currentTime), login_count = login_count + 1 WHERE id=$userId";
+				//$query="UPDATE user SET last_login = FROM_UNIXTIME($currentTime), login_count = login_count + 1 WHERE id=$userId";
+				$query="UPDATE user SET last_login = $currentTime, login_count = login_count + 1 WHERE id=$userId";
+				
 				$result = mysql_query($query);
 
 			}
@@ -107,7 +109,7 @@
 			
 			if($param == null)
 			{
-				$query="SELECT id, score FROM user WHERE id = $id";
+				$query="SELECT id, first_name, last_name, gender, email, score, last_login, login_count, inventory FROM user WHERE id = $id";
 			}
 			else
 			{
