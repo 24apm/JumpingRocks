@@ -1,6 +1,5 @@
 package request
 {
-	import com.adobe.serialization.json.JSON;
 	
 	import config.LookupTable;
 	
@@ -41,7 +40,7 @@ package request
 			var obj:Object = {};
 			try
 			{
-				obj = JSON.decode(e.currentTarget.data);
+				obj = JSON.parse(e.currentTarget.data);
 			}
 			catch(e:Error)
 			{
@@ -70,7 +69,7 @@ package request
 			{
 				try
 				{
-					var inventoryObj:Object = JSON.decode(obj["inventory"]);
+					var inventoryObj:Object = JSON.parse(obj["inventory"]);
 					inventory = new InventoryData(inventoryObj);
 				}
 				catch(e:Error)

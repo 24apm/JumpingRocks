@@ -1,6 +1,5 @@
 package request
 {
-	import com.adobe.serialization.json.JSON;
 	
 	import flash.events.Event;
 	import flash.net.URLVariables;
@@ -21,7 +20,7 @@ package request
 			var obj:Object = {};
 			try
 			{
-				obj = JSON.decode(e.currentTarget.data);
+				obj = JSON.parse(e.currentTarget.data);
 			}
 			catch(e:Error)
 			{
